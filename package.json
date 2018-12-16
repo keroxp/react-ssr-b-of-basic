@@ -6,7 +6,9 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "dev": "ts-node-dev src/index.tsx"
+    "dev": "ts-node-dev src/index.tsx",
+    "watch": "node fuse.js watch",
+    "build": "node fuse.js"
   },
   "dependencies": {
     "axios": "^0.18.0",

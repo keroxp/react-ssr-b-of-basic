@@ -6,7 +6,12 @@ const fuse = FuseBox.init({
   output: "./public/dist/$name.js",
 });
 
-fuse.bundle("render").instructions(`> client/render.tsx`).watch();
-fuse.bundle("hydrate").instructions("> client/hydrate.tsx").watch();
-fuse.bundle("hybrid").instructions("> client/hybrid.tsx").watch();
+const bundles = [
+  fuse.bundle("render").instructions(`> client/render.tsx`),
+  fuse.bundle("hydrate").instructions("> client/hydrate.tsx"),
+  fuse.bundle("hybrid").instructions("> client/hybrid.tsx"),
+];
+if (process.argv[1] === "watch") {
+  bundles.forEach(b => b.watch())
+}
 fuse.run();
